@@ -22,7 +22,7 @@ const onSubmit = async() => {
     const {data} = await repository.login(credentials);
     if (data) {
       localStorage.setItem("access_token", data.access_token)
-      localStorage.setItem("user", JSON.stringify(data.user))
+      localStorage.setItem("user", Json.stringify)
       router.replace({name: "about"}); 
     }
   } catch (e) {
