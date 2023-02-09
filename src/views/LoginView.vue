@@ -43,7 +43,7 @@ const onSubmit = async() => {
         <input 
          v-model="credentials.email"
          type="email" 
-         placeholder="your@email.com"
+         placeholder="someone@email.com"
          required class="border p-2 w-full bg-gray-50 outline-none focus:ring-4 focus:ring-blue-300 rounded">
       </div>
       <div class="mb-4">
