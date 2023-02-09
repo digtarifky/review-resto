@@ -23,7 +23,7 @@ const onSubmit = async() => {
     if (data) {
       localStorage.setItem("access_token", data.access_token)
       localStorage.setItem("user", Json.stringify)
-      router.replace({name: "about"}); 
+      router.replace({name: "restos"}); 
     }
   } catch (e) {
     console.error(e)
@@ -56,7 +56,6 @@ const onSubmit = async() => {
       </div>
         <button type="submit" class="bg-blue-600 text-white p-2 w-full block 
         hover:bg-blue-800 rounded transition-colors duration-200">Masuk</button>
-        <p class="text-gray-500 p-3">Don't have account <router-link to="/Register" class="text-blue-600">Register</router-link> here!</p>
     </form>
     </section>
   </main>
