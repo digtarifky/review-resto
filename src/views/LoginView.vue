@@ -22,12 +22,12 @@ const onSubmit = async() => {
     const {data} = await repository.login(credentials);
     if (data) {
       localStorage.setItem("access_token", data.access_token)
-      localStorage.setItem("user", data.user)
+      localStorage.setItem("user", JSON.stringify(data.user))
       router.replace({name: "about"}); 
     }
   } catch (e) {
     console.error(e)
-  }
+  }``
 
   isLoggingIn.value = false
 };
@@ -38,6 +38,7 @@ const onSubmit = async() => {
     <section class="col-span-6 bg-white h-full shadow-xl">
       <form method="post" :action="route.path" class="p-40" @submit.prevent="onSubmit">
       <div class="mb-4">
+        <p class="text-center mb-5 font-bold text-2xl">Login</p>
         <label for="email" class="block mb-2">Email</label>
         <input 
          v-model="credentials.email"
@@ -55,6 +56,7 @@ const onSubmit = async() => {
       </div>
         <button type="submit" class="bg-blue-600 text-white p-2 w-full block 
         hover:bg-blue-800 rounded transition-colors duration-200">Masuk</button>
+        <p class="text-gray-500 p-3">Don't have account <router-link to="/Register" class="text-blue-600">Register</router-link> here!</p>
     </form>
     </section>
   </main>
