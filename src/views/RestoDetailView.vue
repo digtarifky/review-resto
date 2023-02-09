@@ -21,5 +21,9 @@ onMounted(() => fetchDetail());
 </script>
 
 <template>
-  <div>Sedang menampilkan resto dengan ID: {{ route.params.id }}</div>
+  <BaseContainer>
+    <BaseCard
+      >Sedang menampilkan resto dengan ID: {{ route.params.id }}</BaseCard
+    >
+  </BaseContainer>
 </template>

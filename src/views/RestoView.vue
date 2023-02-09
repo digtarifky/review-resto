@@ -2,6 +2,7 @@
 import { useRestoRespository } from "@/composables";
 import { ref, onMounted } from "vue";
 import { Routerlink } from "vue-router";
+import BaseContainer from "../components/BaseContainer.vue";
 
 const repository = useRestoRespository();
 
@@ -33,7 +34,7 @@ const excerpt = (text, maxLenght = 10, indicator = "...") => {
 </script>
 
 <template>
-    <div class="min-h-screen countainer mx-auto">
+    <BaseContainer>
         <div class="grid grid-cols-12 gap-4 py-4">
             <div v-for="resto in restos" :key="resto.id" class="col-span-4">
                 <!-- Card -->
@@ -44,5 +45,5 @@ const excerpt = (text, maxLenght = 10, indicator = "...") => {
                 </RouterLink>
             </div>
         </div>
-    </div>
+    </BaseContainer>
 </template>
