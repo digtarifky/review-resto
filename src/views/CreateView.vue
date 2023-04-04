@@ -26,6 +26,11 @@
                                 <input type="text"
                                 class="border-2 bg-gray-50 rounded-lg w-full p-2 outline-none">
                             </div>
+                            <div class="pt-7">
+                                <label for="" class="mr-14 font-semibold text-xl">Image</label>
+                                <input type="file"
+                                class="border-2 bg-gray-50 rounded-lg w-full p-2 outline-none">
+                            </div>
                             <div class="pt-7 pb-7">
                                 <label for="" class="mr-7 font-semibold text-xl">description</label>
                                 <input type="text"

@@ -1,4 +1,5 @@
 <script setup>
+
 import { reactive,ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useAuthRepository } from "@/composables";
@@ -11,6 +12,7 @@ const credentials = reactive({
   name: '',
   email: '',
   password: '',
+  confirmed_password:'',
   device_name: 'browser',
 });
 
@@ -102,8 +104,17 @@ const onSubmit = async () => {
                 required
                 class="border p-2 w-full bg-gray-50 outline-none focus:ring-4 focus:ring-blue-300 rounded">
             </div>
+            <div class="mb-4">
+                <label for="confirmed_password" class="block mb-2">Confirm Password</label>
+                <input 
+                v-model="credentials.confirmed_password"
+                type="password"
+                placeholder="password"
+                required
+                class="border p-2 w-full bg-gray-50 outline-none focus:ring-4 focus:ring-blue-300 rounded">
+            </div>
             <button type="submit" class="bg-blue-600 text-white p-2 w-full block 
-            hover:bg-blue-800 rounded transition-colors duration-200">Masuk</button>
+            hover:bg-blue-800 rounded transition-colors duration-200">Buat</button>
             <p class="pt-2 text-slate-600">Already have an account ?
             <router-link to="/" class="text-blue-500 hover:text-blue-900 hover:font-bold transition-colors duration-200">Login</router-link> here</p>
         </form>

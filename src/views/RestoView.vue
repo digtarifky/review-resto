@@ -1,7 +1,7 @@
 <script setup>
 import { useRestoRepository } from "@/composables";
 import { ref, onMounted } from "vue";
-import { RouterLink } from "vue-router";
+import BaseCard from "../components/BaseCard.vue"
 import BaseContainer from "../components/BaseContainer.vue";
 
 const repository = useRestoRepository();
@@ -34,32 +34,26 @@ const excerpt = (text, maxLenght = 10, indicator = "...") => {
 </script>
 
 <template>
-    <main class="grid grid-cols-12 gap-rows-3 bg-[#255755]">
-        <section class="col-span-full row-span-3 mx-10">
-            <div class="text-right">
-                <p class="font-Righteous mr-96 text-4xl inline-block text-left pt-2">.Restoku</p>
-                <router-link to="/create" 
-                class="inline-block p-2 my-8 px-6 bg-green-600 
-                text-white rounded hover:bg-green-700 mr-8">Create</router-link> 
-            </div>
-        </section>
-    </main>
-    <div class="py-8">
-        <div class="bg-yellow-200 p-20">
-            <img src="../../public/image-1.jpg" alt=""
-            class="">
+    <div class="min-h-screen mx-auto ">
+        <div class="bg-[#255755]">
+            <nav class="flex justify-end shadow-lg">
+                <p class="mr-auto px-10 py-5 text-3xl font-Righteous select-none">.Restoku</p>
+                <ul class="flex px-20 py-5 gap-10 font-medium">
+                    <RouterLink to="" class="hover:underline select-none font-Poppins">Home</RouterLink>
+                    <RouterLink to="/create" class="hover:underline select-none font-Poppins">create</RouterLink>
+                    <RouterLink to="/profile" class="hover:underline select-none font-Poppins">Account</RouterLink>
+                </ul>
+            </nav>
         </div>
+        <BaseContainer>
+            <div class="grid grid-cols-12 gap-4 py-4">
+                <div v-for="resto in restos" :key="resto.id" class="col-span-4">
+                    <BaseCard :to="{ name: 'restos-show', params: {id: resto.id} }">
+                        <template #title>{{ resto.name }}</template>
+                            {{ excerpt(resto.description,40) }}                               
+                    </BaseCard>
+                </div>
+            </div>
+        </BaseContainer>
     </div>
-    <BaseContainer>
-        <div class="grid grid-cols-12 gap-4 py-4">
-            <div v-for="resto in restos" :key="resto.id" class="col-span-4">
-                <!-- Card -->
-                <RouterLink :to="{ name: 'restos-show', params: { id: resto.id } }" 
-                class="block bg-white shadow-md p-4 rounded select-none">
-                    <h1 class="text-lg font-bold capitalize">{{ resto.name }}</h1>
-                    <p class="text-gray-500">{{ excerpt(resto.description, 40) }}</p>
-                </RouterLink>
-            </div>
-        </div>
-    </BaseContainer>
 </template>
