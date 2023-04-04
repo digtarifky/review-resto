@@ -14,13 +14,43 @@ const router = createRouter({
     {
       path: '/restos',
       name: 'restos',
-      component: () => ('../view/RestosView.vue')
+      component: () => import("../views/RestoView.vue"),
     },
 
     {
       path: "/restos/:id",
       name: "restos-show",
       component: () => import("../views/RestoDetailView.vue"),
+    },
+
+    {
+      path: "/register",
+      name: 'register',
+      component: () => import("../views/RegisterView.vue"),
+    },
+
+    {
+      path: "/create",
+      name: 'create',
+      component: () => import("../views/CreateView.vue"),
+    },
+
+    {
+      path: "/update",
+      name: 'update',
+      component: () => import("../views/UpdateView.vue"),
+    },
+    
+    {
+      path: "/percobaan",
+      name: 'percobaan',
+      component: () => import("../views/PercobaanView.vue"),
+    },
+
+    {
+      path: "/profile",
+      name: 'profile',
+      component: () => import("../views/ProfileView.vue"),
     },
 
   ]

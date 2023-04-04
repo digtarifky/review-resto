@@ -1,6 +1,6 @@
 import { useHttp } from './useHttp';
 
-export const useRestoRespository = () => {
+export const useRestoRepository = () => {
     const http = useHttp();
 
     /**
@@ -51,7 +51,7 @@ export const useRestoRespository = () => {
      * @param {*} id The id of the record stored in the database.
      * @returns array
      */
-    const reviews = (id) => http.get('api/restos/${id}/reviews');
+    const reviews = (id) => http.get(`api/restos/${id}/reviews`);
 
     return {
         index,

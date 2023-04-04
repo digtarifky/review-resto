@@ -15,28 +15,26 @@ const credentials = reactive({
 });
 
 const isLoggingIn = ref(false);
-const onSubmit = async() => {
+const onSubmit = async () => {
   isLoggingIn.value = true;
-
   try {
-    const {data} = await repository.login(credentials);
+    const { data } = await repository.login(credentials);
     if (data) {
-      localStorage.setItem("access_token", data.access_token)
-      localStorage.setItem("user", Json.stringify)
-      router.replace({name: "restos"}); 
+      localStorage.setItem("access_token", data.access_token);
+      localStorage.setItem("user", JSON.stringify(data.user));
+      router.replace({ name: "restos" });
     }
   } catch (e) {
-    console.error(e)
-  }``
-
-  isLoggingIn.value = false
+    console.error(e);
+  }
+  isLoggingIn.value = false;
 };
 </script>
 
 <template>
   <main class="grid grid-cols-12 gap-4 min-h-screen">
     <section class="col-span-6 bg-white h-full shadow-xl">
-      <form method="post" :action="route.path" class="p-40" @submit.prevent="onSubmit">
+      <form method="post" :action="route.path" class="p-32" @submit.prevent="onSubmit">
       <div class="mb-4">
         <p class="text-center mb-5 font-bold text-2xl">Login</p>
         <label for="email" class="block mb-2">Email</label>
@@ -44,7 +42,8 @@ const onSubmit = async() => {
          v-model="credentials.email"
          type="email" 
          placeholder="someone@email.com"
-         required class="border p-2 w-full bg-gray-50 outline-none focus:ring-4 focus:ring-blue-300 rounded">
+         required 
+         class="border p-2 w-full bg-gray-50 outline-none focus:ring-4 focus:ring-blue-300 rounded">
       </div>
       <div class="mb-4">
         <label for="password" class="block mb-2">Password</label>
@@ -54,8 +53,10 @@ const onSubmit = async() => {
          required
          class="border p-2 w-full bg-gray-50 outline-none focus:ring-4 focus:ring-blue-300 rounded">
       </div>
-        <button type="submit" class="bg-blue-600 text-white p-2 w-full block 
-        hover:bg-blue-800 rounded transition-colors duration-200">Masuk</button>
+      <button type="submit" class="bg-blue-600 text-white p-2 w-full block 
+      hover:bg-blue-800 rounded transition-colors duration-200">Masuk</button>
+      <p class="pt-2 text-slate-600">You haven't Account ?
+        <router-link to="/register" class="text-blue-500 hover:text-blue-900 hover:font-bold transition-colors duration-200">Register</router-link></p>
     </form>
     </section>
   </main>
