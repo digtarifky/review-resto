@@ -1,7 +1,32 @@
 <script setup>
 
-
+import { ref, onMounted } from "vue";
+import { RouterLink } from "vue-router";
+import { useAuthRepository } from "../composables/useAuthRepository";
+import { useRestoRepository } from "../composables/useRestoRepository";
 import Navbar from '../components/Navbar.vue';
+
+const DataUser = JSON.parse(localStorage.getItem('user'));
+const AuthRepository = useAuthRepository();
+
+const isLoading = ref(true);
+const profile = ref([]);
+
+const fetchUserProfile = async () => {
+    isLoading.value = true;
+    try {
+        const {data} = await AuthRepository.profile();
+        profile.value = data;
+    }catch (e) {
+        console.error(e);
+    }
+    isLoading.value = false;
+};
+
+onMounted(() => {
+  fetchUserProfile();
+});
+
 </script>
 
 
@@ -10,7 +35,10 @@ import Navbar from '../components/Navbar.vue';
         <div class="min-h-screen flex flex-col items-center">
             <div class="flex flex-col items-center">
                 <div class="w-[120px] relative mt-20">
-                    <div class="w-[130px] relative mt-6">
+                    <div v-if="profile.profile_picture" class="w-[130px] relative mt-6">
+                        <img src="profile" alt="" class="rounded-full">
+                    </div>
+                    <div v-else class="w-[130px] relative mt-6">
                         <img
                         src="../../public/img-profile.jpg"
                         class="rounded-full"
@@ -18,75 +46,21 @@ import Navbar from '../components/Navbar.vue';
                         />
                     </div>
                 </div>
-                <div class="text-2xl mt-4 font-Poppins">
-                <p>Digta rifky</p>
+                <div class="text-2xl mt-4 space-y-3 font-Poppins text-center">
+                    <p class="font-bold">{{ DataUser.name }}</p>
+                    <p>{{ profile.email }}</p>
+                    <p v-if="profile.description">{{ profile.description }}</p>
+                    <p v-else>No description</p>
+                </div>
+                <div class="border-b-4 pt-5 w-full border-gray-600 mx-[150px]"></div>
+                <div class="p-8 space-x-10">
+                    <router-link to="">
+                        <button class="p-4 font-Poppins bg-[#abd1c6] rounded-xl">See resto</button>
+                    </router-link>
+                    <router-link to="">
+                        <button class="p-4 font-Poppins bg-[#abd1c6] rounded-xl">edit resto</button>
+                    </router-link>
                 </div>
             </div>
-            <div class="p-28">
-                <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                            <tr>
-                                <th scope="col" class="px-6 py-3">
-                                    Name Resto
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Address
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    description
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Image
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Action
-                                </th>
-                            </tr>
-                        </thead>
-                    <tbody>
-                        <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Lorem, ipsum dolor.
-                            </th>
-                            <td class="px-6 py-4">
-                                Lorem, ipsum dolor.
-                            </td>
-                            <td class="px-6 py-4">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, aliquam.
-                            </td>
-                            <td class="px-6 py-4">
-                                Lorem, ipsum dolor.
-                            </td>
-                            <td class="px-6 py-4 space-x-6">
-                                <router-link to="" class="font-medium bg-blue-600 text-white p-2 px-5 hover:bg-blue-700 rounded ">Edit</router-link>
-                                <router-link to="" class="font-medium bg-yellow-400 text-white p-2 px-5 hover:bg-yellow-600 rounded ">Show</router-link>
-                                <router-link to="" class="font-medium bg-red-600 text-white p-2 px-5 hover:bg-red-700 rounded ">Delete</router-link>
-                            </td>
-                        </tr>
-                        <tr class="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Lorem, ipsum dolor.
-                            </th>
-                            <td class="px-6 py-4">
-                                Lorem, ipsum dolor.
-                            </td>
-                            <td class="px-6 py-4">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, labore?
-                            </td>
-                            <td class="px-6 py-4">
-                                Lorem, ipsum dolor.
-                            </td>
-                            <td class="px-6 py-4 space-x-6">
-                                <router-link to="" class="font-medium bg-blue-600 text-white p-2 px-5 hover:bg-blue-700 rounded ">Edit</router-link>
-                                <router-link to="" class="font-medium bg-yellow-400 text-white p-2 px-5 hover:bg-yellow-600 rounded ">Show</router-link>
-                                <router-link to="" class="font-medium bg-red-600 text-white p-2 px-5 hover:bg-red-700 rounded ">Delete</router-link>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            </div>
-            
         </div>
 </template>

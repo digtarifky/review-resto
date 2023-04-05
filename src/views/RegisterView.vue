@@ -12,8 +12,7 @@ const credentials = reactive({
   name: '',
   email: '',
   password: '',
-  confirmed_password:'',
-  device_name: 'browser',
+  password_confirmation:'',
 });
 
 const isLoggingIn = ref(false);
@@ -41,7 +40,7 @@ const onSubmit = async () => {
                 <label for="name" class="block mb-2">name</label>
                 <input 
                 v-model="credentials.name"
-                type="email" 
+                type="text" 
                 placeholder="Name"
                 required 
                 class="border p-2 w-full bg-gray-50 outline-none focus:ring-4 focus:ring-blue-300 rounded">
@@ -67,7 +66,7 @@ const onSubmit = async () => {
             <div class="mb-4">
                 <label for="confirmed_password" class="block mb-2">Confirm Password</label>
                 <input 
-                v-model="credentials.confirmed_password"
+                v-model="credentials.password_confirmation"
                 type="password"
                 placeholder="password"
                 required
