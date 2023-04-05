@@ -1,26 +1,12 @@
-<script></script>
+<script setup>
+
+
+import Navbar from '../components/Navbar.vue';
+</script>
+
 
 <template>
-  <div class="min-h-screen mx-auto">
-        <div class="bg-[#255755]">
-            <nav class="flex justify-end shadow-lg">
-                <p class="mr-auto px-10 py-5 text-3xl font-Righteous select-none">
-                .Restoku
-                </p>
-                <ul class="flex px-20 py-5 gap-10 font-medium">
-                <RouterLink
-                    to="/restos"
-                    class="select-none font-Poppins hover:text-white duration-500"
-                    >Home</RouterLink>
-                <RouterLink
-                    to="/create"
-                    class="select-none font-Poppins hover:text-white duration-500"
-                    >create</RouterLink>
-                <RouterLink to="" class="select-none font-Poppins"
-                    >Account</RouterLink>
-                </ul>
-            </nav>
-        </div>
+    <Navbar />
         <div class="min-h-screen flex flex-col items-center">
             <div class="flex flex-col items-center">
                 <div class="w-[120px] relative mt-20">
@@ -103,5 +89,4 @@
             </div>
             
         </div>
-    </div>
 </template>

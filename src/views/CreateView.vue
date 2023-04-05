@@ -1,15 +1,10 @@
 <script setup>
+
+import Navbar from '../components/Navbar.vue';
 </script>
 
 <template>
-    <div class="min-h-screen mx-auto ">
-        <div class="bg-[#255755]">
-            <nav class="flex justify-end shadow-lg">
-                <p class="mr-auto px-10 py-5 text-3xl font-Righteous select-none">.Restoku</p>
-                <ul class="flex px-20 py-5 gap-10 font-medium">
-                </ul>
-            </nav>
-        </div>
+    <Navbar />
         <section class="col-span-full row-span-3 mx-10">
             <div class="min-h-screen p-44 pt-12">
                 <div class=" bg-white h-full shadow-xl rounded-2xl">
@@ -43,5 +38,4 @@
                 </div>
             </div>
         </section>
-    </div>
 </template>
