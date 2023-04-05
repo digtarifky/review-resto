@@ -20,13 +20,11 @@ const isLoggingIn = ref(false);
 const onSubmit = async () => {
   isLoggingIn.value = true;
   try {
-    const { data } = await repository.login(credentials);
-    if (data) {
-      localStorage.setItem("access_token", data.access_token);
-      localStorage.setItem("user", JSON.stringify(data.user));
-      router.replace({ name: "restos" });
-    }
-  } catch (e) {
+    repository.register(credentials);
+
+    router.replace({name: 'login'})
+  } 
+  catch (e) {
     console.error(e);
   }
   isLoggingIn.value = false;
@@ -35,50 +33,12 @@ const onSubmit = async () => {
 </script>
 
 <template>
-    <!-- <main class="min-h-screen flex justify-center mx-auto py-14 px-16 bg-gray-300">
-        <section class=" bg-white w-9/12 shadow-xl rounded-xl">
-            <form action="" class="p-28">
-            <div class="mb-4">
-            <p class="text-center text-3xl">Register</p>
-            <label for="name" class="block mb-2">Name</label>
-            <input 
-            class="border p-2 w-full bg-gray-50 rounded"
-            type="name"
-            placeholder="Your Name"
-            required>
-        </div>
-        <div class="mb-4">
-            <label for="password" class="block mb-2">Email</label>
-            <input 
-            class="border p-2 w-full bg-gray-50 rounded"
-            type="email"
-            placeholder="Email"
-            required>
-        </div>
-        <div class="mb-4">
-            <label for="password" class="block mb-2">Password</label>
-            <input 
-            class="border p-2 w-full bg-gray-50 rounded"
-            type="Password"
-            placeholder="Password"
-            required>
-        </div>
-        <button type="submit" class="bg-blue-600 text-white p-2 w-full block 
-        hover:bg-blue-800 rounded transition-colors duration-200"><router-link to="/">Register</router-link></button>
-        <p class="text-slate-600 pt-2">You was register 
-        <router-link to="/" 
-        class="text-blue-500 hover:text-blue-900 hover:font-bold transition-colors duration-200">
-        Login</router-link> here</p>
-            </form>
-        </section>
-    </main> -->
-
     <main class="grid grid-cols-12 gap-4 min-h-screen">
     <section class="col-span-6 bg-white h-full shadow-xl">
         <form method="post" :action="route.path" class="p-32" @submit.prevent="onSubmit">
             <div class="mb-4">
                 <p class="text-center mb-5 font-bold text-2xl">Register</p>
-                <label for="email" class="block mb-2">name</label>
+                <label for="name" class="block mb-2">name</label>
                 <input 
                 v-model="credentials.name"
                 type="email" 

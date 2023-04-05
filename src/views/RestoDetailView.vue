@@ -48,8 +48,8 @@ onMounted(() => fetchReviews());
             <nav class="flex justify-end shadow-lg">
                 <p class="mr-auto px-10 py-5 text-3xl font-Righteous select-none">.Restoku</p>
                 <ul class="flex px-20 py-5 gap-10 font-medium">
-                    <RouterLink to="/restos" class="hover:underline select-none font-Poppins">Home</RouterLink>
-                    <RouterLink to="/profile" class="hover:underline select-none font-Poppins">Account</RouterLink>
+                    <RouterLink to="/restos" class="select-none font-Poppins">Home</RouterLink>
+                    <RouterLink to="/profile" class="select-none font-Poppins">Account</RouterLink>
                 </ul>
             </nav>
             <RouterLink :to="{ name: 'restos' }" 
