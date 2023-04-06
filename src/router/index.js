@@ -53,6 +53,12 @@ const router = createRouter({
       component: () => import("../views/ProfileView.vue"),
     },
 
+    {
+      path: "/crudpage",
+      name: 'crudpage',
+      component: () => import("../views/CRUDPage.vue"),
+    },
+
   ]
 })
 

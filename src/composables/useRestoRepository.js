@@ -25,7 +25,7 @@ export const useRestoRepository = () => {
      * @param {object} data The data to be stored on the database
      * @return object
      */
-    const store = (data) => http.get("/api/restos", data);
+    const store = (data) => http.post("/api/restos", data);
 
     /**
      * Update The specified record on the database with the new data
@@ -34,7 +34,7 @@ export const useRestoRepository = () => {
      * @param {*} data The data to be stored on the database.
      * @returns object
      */
-    const update = (id, data) => http.get(`/api/restos/${id}`, data);
+    const update = (id, data) => http.patch(`/api/restos/${id}`, data);
 
     /**
      * Delete the specified record on the database.
@@ -43,7 +43,7 @@ export const useRestoRepository = () => {
      * @return object
      */
 
-    const destroy = (id) => http.get(`api/restos/${id}`);
+    const destroy = (id) => http.destroy(`api/restos/${id}`);
 
     /**
      * Get all review of the specified record on the database.

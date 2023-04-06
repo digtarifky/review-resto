@@ -1,15 +1,9 @@
 <script setup>
+import Navbar from '../components/Navbar.vue';
 </script>
 
 <template>
-    <main class="grid grid-cols-12 gap-rows-3 bg-[#255755]">
-        <div class="bg-yellow-200">
-            <p class="font-Righteous text-4xl p-5">.Restoku</p>
-            <div class="text-right bg-white">
-                <p class="font-semibold text-2xl">Home</p>
-            </div>
-        </div>
-    </main>
+    <Navbar />
         <section class="col-span-full row-span-3 mx-10">
             <div class="min-h-screen p-44 pt-12">
                 <div class=" bg-white h-full shadow-xl">
@@ -37,7 +31,7 @@
                                 class="border-2 bg-gray-50 rounded-lg w-full p-2 pb-16 outline-none">
                             </div>
                             <button type="submit" class="bg-blue-600 text-white p-2 ml-44 inline-block w-96
-                            hover:bg-blue-800 rounded transition-colors duration-200">Edit</button>
+                            hover:bg-blue-800 rounded transition-colors duration-200">update</button>
                         </div>
                     </form>
                 </div>

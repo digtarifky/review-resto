@@ -37,14 +37,19 @@ const excerpt = (text, maxLenght = 10, indicator = "...") => {
 <template>
     <Navbar />
         <div class="flex justify-around pt-28">
-            <p class="font-Poppins text-3xl">Welcome to <span class="font-Righteous">.Restoku</span></p>
+            <p class="font-Poppins text-3xl">Hallo EveryOne ^_^</p>
         </div>
         <div class="border-b-4 pt-5 border-gray-600 mx-[450px]"></div>
         <div class="border-b-4 pt-5 border-gray-600 mx-56"></div>
-        <div class="p-12 flex justify-center">
-            <div class="bg-[#abd1c6] rounded "> 
+        <div class="bg-[#abd1c6] py-8 pl-6 pr-10 flex justify-center rounded-xl mt-5 mx-[210px]">
+            <div>
+                <p class="font-medium text-4xl">Welcome to</p>
+                <p class="font-Righteous text-8xl">Restoku</p>
+                <p class="w-[500px] font-serif">looking for restaurants with delicious and cheap food is not an easy and fast. So we make it easy with the presence of Restoku. looking for delicious and cheap food, easier with .Restoku</p>
+            </div>
+            <div>
                 <img src="../../public/img-2.jpg"
-                class="object-contain h-96 w-[900px]" alt="">
+                class="object-contain rounded-3xl h-[250px] w-96" alt="">
             </div>
         </div>
         <div class="border-b-4 pt-3 border-gray-600 mx-56"></div>

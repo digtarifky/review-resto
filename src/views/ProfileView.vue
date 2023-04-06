@@ -53,14 +53,6 @@ onMounted(() => {
                     <p v-else>No description</p>
                 </div>
                 <div class="border-b-4 pt-5 w-full border-gray-600 mx-[150px]"></div>
-                <div class="p-8 space-x-10">
-                    <router-link to="">
-                        <button class="p-4 font-Poppins bg-[#abd1c6] rounded-xl">See resto</button>
-                    </router-link>
-                    <router-link to="">
-                        <button class="p-4 font-Poppins bg-[#abd1c6] rounded-xl">edit resto</button>
-                    </router-link>
-                </div>
             </div>
         </div>
 </template>
