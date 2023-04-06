@@ -55,7 +55,7 @@ onMounted(() => fetchReviews());
   </button>
     <button class="p-4">
       <RouterLink
-      :to="{ name: 'update' }"
+      :to="{ name: 'update' , params: {id: route.params.id}}"
       class="inline-block p-2 px-6  bg-blue-500 text-white rounded">
       Edit
     </RouterLink>
